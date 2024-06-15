@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEM CGPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function calculateAverage() {
+            // Get the values from the input fields
+            const value1 = parseFloat(document.getElementById('input1').value);
+            const value2 = parseFloat(document.getElementById('input2').value);
+            const value3 = parseFloat(document.getElementById('input3').value);
+            const value4 = parseFloat(document.getElementById('input4').value);
+            const value5 = parseFloat(document.getElementById('input5').value);
+            const value6 = parseFloat(document.getElementById('input6').value);
+            
+            // Check if any value is NaN (Not a Number) and replace it with 0
+            const values = [value1, value2, value3, value4, value5, value6].map(v => isNaN(v) ? 0 : v);
+
+            // Calculate the weighted average
+            const weighted_avg = (values[0] * 19.5 + values[1] * 19.5 + values[2] * 21.5 + values[3] * 21.5 + values[4] * 21.5 + values[5] * 21.5) / 125;
+
+            // Display the average
+            document.getElementById('result').textContent = 'Average: ' + weighted_avg.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>SEM CGPA Calculator</h1>
+        <form onsubmit="event.preventDefault(); calculateAverage();">
+            <label for="input1">SEM 1:</label>
+            <input type="text" id="input1" name="input1">
+            <label for="input2">SEM 2:</label>
+            <input type="text" id="input2" name="input2">
+            <label for="input3">SEM 3:</label>
+            <input type="text" id="input3" name="input3">
+            <label for="input4">SEM 4:</label>
+            <input type="text" id="input4" name="input4">
+            <label for="input5">SEM 5:</label>
+            <input type="text" id="input5" name="input5">
+            <label for="input6">SEM 6:</label>
+            <input type="text" id="input6" name="input6">
+            <input type="submit" value="Calculate Average">
+        </form>
+        <p id="result">Average: N/A</p>
+    </div>
+</body>
+</html>
