@@ -1,1 +1,1 @@
-# internship_groups
+# CPGA Calculator
